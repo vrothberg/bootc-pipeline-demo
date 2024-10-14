@@ -1,0 +1,20 @@
+[Unit]
+Description=A minimal container
+
+[Container]
+# Use Red Hat's Universal Base Image
+Image=registry.access.redhat.com/ubi9
+
+# In the container we just run sleep
+Exec=sleep 60
+
+# Automatically pull down a new version of ubi9 and restart the service
+AutoUpdate=registry
+
+[Service]
+# Restart service when sleep finishes
+Restart=always
+
+[Install]
+# Start by default on boot
+WantedBy=multi-user.target default.target
